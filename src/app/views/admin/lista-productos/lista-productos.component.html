@@ -1,0 +1,214 @@
+<div *ngIf="showModaMensaje" class="overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex"
+style="position: fixed;
+top: 0;
+right: 0;
+bottom: 0;
+left: 0;
+background-color: #000000;">
+    <div class="relative w-auto my-6 mx-auto max-w-sm">
+      <!--content-->
+      <div class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+        <!--header-->
+        <div class="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
+          <h3 class="text-3xl font-semibold">
+            Mensaje
+          </h3>
+          <button class="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none" (click)="toggleModalMensaje()">
+            <span class="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
+              ×
+            </span>
+          </button>
+        </div>
+        <!--body-->
+            <div class="flex-auto px-4 lg:px-10 py-10 pt-0">
+                <div class="block w-full overflow-x-auto bg-white">
+                    <p *ngIf="tituloEditarAgregarProducto === 'Agregar'">Registro con alta exitosa </p>
+                    <p *ngIf="tituloEditarAgregarProducto === 'Editar'">Registro editado con exito </p>
+                </div>                
+            </div>
+    <!--footer-->
+    <div class="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
+        <button class="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" (click)="toggleModalMensaje()">
+            Close
+        </button>
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+<div *ngIf="showModalEditarAgregar" class="overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex"
+style="position: fixed;
+top: 0;
+right: 0;
+bottom: 0;
+left: 0;
+background-color: #000000;">
+    <div class="relative w-auto my-6 mx-auto max-w-sm">
+      <!--content-->
+      <div class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+        <!--header-->
+        <div class="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
+          <h3 class="text-3xl font-semibold">
+            Ventana {{tituloEditarAgregarProducto}} Producto
+          </h3>
+          <button class="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none" (click)="toggleModal()">
+            <span class="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
+              ×
+            </span>
+          </button>
+        </div>
+        <!--body-->
+            <div class="flex-auto px-4 lg:px-10 py-10 pt-0">
+              <div class="block w-full overflow-x-auto bg-white">
+                <table style="width: 100%;">
+                  <tbody>
+                    <tr>
+                      <td><label class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                        htmlFor="grid-password">Nombre </label></td>
+                        <td>
+                            <input type="text" [(ngModel)]="nombreProducto" name="nombreProducto"
+                            class="border-0 px-1 py-1 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"/>
+                            <span *ngIf="nombreProducto === ''" 
+                                    style="color: red;
+                                    font-style: italic;
+                                    font-size: 13px;">Campo obligatorio</span>
+                        </td>
+                    </tr>
+                    <tr>
+                      <td><label class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                        htmlFor="grid-password">Descripción</label></td>
+                      <td>
+                        <input type="text" [(ngModel)]="descripcionProducto" name="descripcionProducto"
+                        class="border-0 px-1 py-1 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"/>
+                        <span *ngIf="descripcionProducto === ''" 
+                                    style="color: red;
+                                    font-style: italic;
+                                    font-size: 13px;">Campo obligatorio</span>
+                    </td>
+                    </tr>
+                    <tr>
+                        <td><label class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                          htmlFor="grid-password">Precio</label></td>
+                        <td>
+                            <input type="number" [(ngModel)]="precioProducto" name="precioProducto"
+                          class="border-0 px-1 py-1 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"/>
+                          <span *ngIf="precioProducto === null || precioProducto === ''" 
+                                    style="color: red;
+                                    font-style: italic;
+                                    font-size: 13px;">Campo obligatorio</span>
+                        </td>
+                          
+                      </tr>
+                      <tr>
+                        <td><label class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                          htmlFor="grid-password">Inventario</label></td>
+                        <td>
+                            <input type="number" [(ngModel)]="inventarioProducto" name="inventarioProducto"
+                          class="border-0 px-1 py-1 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"/>
+                          <span *ngIf="inventarioProducto  === null || inventarioProducto === ''" 
+                                    style="color: red;
+                                    font-style: italic;
+                                    font-size: 13px;">Campo obligatorio</span>
+                        </td>
+                      </tr>
+                  </tbody>
+                </table>
+              </div>                
+            </div>
+        <!--footer-->
+        <div class="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
+            <button class="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" (click)="agregarProducto()"
+            *ngIf="tituloEditarAgregarProducto === 'Agregar'">
+                Agregar
+            </button>
+            <button class="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" (click)="editarProducto()"
+            *ngIf="tituloEditarAgregarProducto === 'Editar'">
+                Editar
+            </button>
+            <button class="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" (click)="toggleModal()">
+                Close
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="showModalAbonos" class="opacity-25 fixed inset-0 z-40 bg-black"></div> 
+
+
+<div class="flex flex-wrap">
+    <div class="w-full lg:w-12/12 px-0">
+        <div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-100 border-0">
+            <div class="rounded-t bg-white mb-0 px-6 py-6">
+              <div class="text-center flex justify-between">
+                <h6 class="text-blueGray-700 text-xl font-bold">Módulo Consulta Productos</h6>
+              </div>
+            </div>
+            <br>
+            <div class="flex-auto px-1 lg:px-10 py-10 pt-0">
+
+                <form>
+                    <div class="flex flex-wrap">
+                      <div class="w-full lg:w-4/12 px-4">
+                        <div class="relative w-full mb-3 tamanioinput">
+                          <label class="block uppercase text-blueGray-600web text-xs font-bold mb-2" htmlFor="grid-password">Nombre</label>
+                          <input type="text"   [(ngModel)]="nombreClienteTicketInput" name="nombreClienteTicketInput"
+                            class="border-0 px-1 py-1 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"/>
+                        </div>
+                        
+                        <div class="relative w-full mb-3">
+                          <button class="bg-red-600 text-white active:bg-red-700 font-bold uppercase text-xs px-4 py-2 
+                          rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
+                              type="button" (click)="busquedaProducto()">
+                              Buscar
+                          </button>  
+                          <button class="bg-red-600 text-white active:bg-red-700 font-bold uppercase text-xs px-4 py-2 
+                          rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
+                              type="button" (click)="abrirModalAccion('A',null)">
+                              Agregar
+                          </button>  
+                        </div>
+                      </div>
+                    </div>
+                </form>
+                 <!-- Projects table -->
+                
+                 <div class="block w-full overflow-x-auto bg-white">
+                  <table class="items-center w-full bg-transparent border-collapse">                    
+                      <thead>
+                      <tr>
+                          <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">#</th>
+                          <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">Nombre</th>
+                          <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">Precio</th>
+                          <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">Descripción</th>
+                          <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">Operación</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                          <tr *ngFor="let listProducto of listaProducto">
+                              <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                {{listProducto.idProducto}}
+                              </td>
+                              <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                  {{listProducto.nombre}}
+                              </td>
+                              <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                {{listProducto.precio}}
+                              </td>
+                              <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                {{listProducto.descripcion}}
+                              </td>
+                              <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                  <button (click)="abrirModalAccion('E',listProducto)">Editar</button>
+                              </td>
+                          </tr>
+                      </tbody>
+                  </table>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
